@@ -1,0 +1,44 @@
+﻿@model ChatBotDemo.Models.Chatbot.Message
+
+@if (Model.SenderType == ChatBotDemo.Models.Chatbot.MessageType.Bot)
+{
+    <div class="d-flex justify-content-start w-100">
+        <div class="maxwidth-75">
+            <table>
+                <tr>
+                    <td class="pe-2">
+                        <img src="~/images/chat-left-dots.svg" alt="Chat Icon" />
+                    </td>
+                    <td>
+                        <small class="text-muted ">
+                            Livechat @DateTime.Now.ToString("h:mm tt", System.Globalization.CultureInfo.InvariantCulture)
+                        </small>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="pe-2">
+                    </td>
+                    <td>
+                        <p class="message bot-message">
+                            @Model.MessageValue
+                        </p>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+}
+else //Human
+{
+    <div class="d-flex justify-content-end w-100">
+        <div class="maxwidth-75">
+            <small class="text-muted d-flex justify-content-end mb-1">
+                @DateTime.Now.ToString("h:mm tt", System.Globalization.CultureInfo.InvariantCulture)
+            </small>
+            <p class="message user-message">
+                @Model.MessageValue
+            </p>
+        </div>
+    </div>
+}

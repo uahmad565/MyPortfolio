@@ -15,7 +15,8 @@ namespace ChatBotDemo.Controllers
 
         public IActionResult Index()
         {
-            return View();
+           
+           return Redirect("/Chatbot/Index");
         }
 
         public IActionResult Privacy()
