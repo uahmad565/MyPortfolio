@@ -53,6 +53,11 @@ namespace ChatBotDemo.Controllers
             string? currentSession = HttpContext.Session.GetString(SessionConstants.SESSION_ID);
 
             var list = this._memoryStorage.GetCurrentSessionMessages(currentSession);
+            if (list.Count == 0)
+            {
+                list.Add(new Message { SenderType = MessageType.Bot, MessageValue = "Hello, how can I assist you today?" });
+                this._memoryStorage.SetSessionMessages(currentSession, list);
+            }
             return PartialView("_Chatbot", list);
         }
     }

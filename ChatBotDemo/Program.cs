@@ -11,7 +11,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
 {
-    options.IdleTimeout = TimeSpan.FromSeconds(30);
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
     options.IOTimeout = TimeSpan.FromSeconds(30);
     options.Cookie.Name = "Chatbot.Session";
     options.Cookie.HttpOnly = true;
