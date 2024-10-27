@@ -8,7 +8,8 @@
 .chatbot-assisstant {
     /*display: none;*/ /*don't show initially chat assisstant */
     position: fixed;
-    bottom: 0px;
+    /*bottom: 0px;*/
+    bottom: -100%; /* Position out of view */
     right: 20px;
     width: 400px;
     max-height: 600px;
@@ -16,6 +17,13 @@
     border: 1px solid #ddd;
     border-radius: 10px;
     overflow: hidden; /* Prevent overflow */
+    opacity: 0;
+    transition: opacity 0.3s ease, bottom 0.5s ease; /* Smooth transition */
+}
+
+.chatbot-assistant-show {
+    bottom: -5px; /* Move up to visible position */
+    opacity: 1;
 }
 
 .chat-container {

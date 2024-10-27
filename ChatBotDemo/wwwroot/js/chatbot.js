@@ -1,5 +1,6 @@
 ﻿$(function () {
     //To set scroll
+    $('#chatbot').toggleClass("chatbot-assistant-show"); // You can also add logic to minimize to just a button
     var chatContainer = $('#chatContainer');
 
     //Handle Form submission
@@ -43,12 +44,12 @@
     });
 
     $('#minimizeChat').on('click',function () {
-        $('#chatbot').toggle(); // You can also add logic to minimize to just a button
+        $('#chatbot').toggleClass("chatbot-assistant-show"); // You can also add logic to minimize to just a button
         $('#toggleChat').toggle();
     });
 
     $('#toggleChat').on('click', function () {
-        $('#chatbot').toggle();
+        $('#chatbot').toggleClass("chatbot-assistant-show");
         $('#toggleChat').toggle();
         scrollChatToTop();
     })
