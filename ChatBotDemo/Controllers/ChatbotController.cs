@@ -1,14 +1,18 @@
 ﻿using ChatBotDemo.Models.Chatbot;
+using ChatBotDemo.Models.Helpers;
+using ChatBotDemo.Models.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
+using Microsoft.Extensions.Caching.Distributed;
 
 namespace ChatBotDemo.Controllers
 {
     public class ChatbotController : Controller
     {
-        public ChatbotController()
+        private readonly IMemoryStorage _memoryStorage;
+        public ChatbotController(IMemoryStorage memoryStorage)
         {
-
+            this._memoryStorage = memoryStorage;
         }
         public IActionResult Index()
         {
@@ -28,10 +32,28 @@ namespace ChatBotDemo.Controllers
             return View(messages);
         }
         [HttpPost]
-        public IActionResult SendMessage(List<string> messages)
+        public IActionResult SendMessage(string message)
         {
+            string? currentSession = HttpContext.Session.GetString(SessionConstants.SESSION_ID);
+
+            var list = this._memoryStorage.GetCurrentSessionMessages(currentSession);
+
+            list.Add(new Message { SenderType = MessageType.Human, MessageValue = message });
+            //call chatbot API -> all session messages histroy
             Message response = new Message { MessageValue = "Bot Response", SenderType = MessageType.Bot };
+            list.Add(response);
+            this._memoryStorage.SetSessionMessages(currentSession, list);
+
             return PartialView("_ChatMessage", response);
+        }
+
+        [HttpGet]
+        public IActionResult GetChatbotPartialView()
+        {
+            string? currentSession = HttpContext.Session.GetString(SessionConstants.SESSION_ID);
+
+            var list = this._memoryStorage.GetCurrentSessionMessages(currentSession);
+            return PartialView("_Chatbot", list);
         }
     }
 }

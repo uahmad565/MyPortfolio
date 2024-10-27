@@ -1,47 +1,8 @@
 ﻿@* Strongly Typed View *@
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Chatbot Page";
     @model List<ChatBotDemo.Models.Chatbot.Message>
 
 }
 
-<link rel="stylesheet" href="~/css/chatbot.css" />
-@section Scripts {
-    <script src="~/js/chatbot.js"></script>
-}
-
-<button id="toggleChat" class="toggle-chat-btn btn btn-primary">
-    <img src="~/images/chat-left-dots.svg" alt="Chat Minimize Pane" />
-    Chat with us</button>
-
-<div id="chatbot" class="chatbot-assisstant">
-    <div class="container p-0">
-
-        <div class="chat-header py-2 px-4 d-flex align-items-center justify-content-between">
-            <strong>Usman Chatbot</strong>
-            <button id="minimizeChat" class="btn btn-light minimize-btn">
-                <img src="~/images/chat-minimize.svg" alt="Chat Minimize Pane" />
-            </button>
-        </div>
-
-        <div class="chat-container overflow-auto h-100" id="chatContainer">
-            <div class="p-4" id="messageContainer">
-                @foreach (var message in Model)
-                {
-                    @await Html.PartialAsync("_ChatMessage", message)
-                }
-            </div>
-        </div>
-
-        <form class="px-0 pb-3" id="chatForm">
-            <div class="input-group">
-                <input type="text" id="userInput" class="form-control" placeholder="Type your message..." required />
-                <div class="input-group-append">
-                    <button type="submit" class="btn btn-primary">Send</button>
-                </div>
-            </div>
-        </form>
-
-    </div>
-</div>
-
+This is default chat

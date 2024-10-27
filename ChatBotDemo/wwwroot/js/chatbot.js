@@ -26,15 +26,11 @@
             </div>
         `);
 
-        const messages = $('#messageContainer p.message').map(function () {
-            return $(this).text().trim();
-        }).get();
-        debugger;
 
         $.ajax({
             url: '/Chatbot/SendMessage',
             type: 'Post',
-            data: { messages: messages },
+            data: { message: userInput },
             success: function (response) {
                 messageContainer.append(response);
                 scrollChatToTop();
@@ -43,7 +39,7 @@
             error: function () {
                 alert('Error sending message.');
             }
-        })
+        });
     });
 
     $('#minimizeChat').on('click',function () {

@@ -1,4 +1,15 @@
-﻿// Please see documentation at https://learn.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿$(function () {
 
-// Write your JavaScript code.
+    var chatbotBox = $('#chatbot-box');
+    $.ajax({
+        url: '/Chatbot/GetChatbotPartialView',
+        type: 'Get',
+        //data: { message: userInput },
+        success: function (response) {
+            chatbotBox.append(response);
+        },
+        error: function () {
+            alert('Error sending message.');
+        }
+    });
+});

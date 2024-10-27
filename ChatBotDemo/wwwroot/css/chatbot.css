@@ -1,11 +1,12 @@
 ﻿.toggle-chat-btn {
+    display: none; /*don't show initially chat btn */
     position: fixed;
     right: 10px;
     bottom: 70px;
 }
 
 .chatbot-assisstant {
-    display: none; /*don't show initially chat assisstant */
+    /*display: none;*/ /*don't show initially chat assisstant */
     position: fixed;
     bottom: 0px;
     right: 20px;

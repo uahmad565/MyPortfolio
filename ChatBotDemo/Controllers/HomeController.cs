@@ -1,4 +1,5 @@
 using ChatBotDemo.Models;
+using ChatBotDemo.Models.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -7,7 +8,6 @@ namespace ChatBotDemo.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -15,12 +15,16 @@ namespace ChatBotDemo.Controllers
 
         public IActionResult Index()
         {
-           
-           return Redirect("/Chatbot/Index");
+
+            ViewData[SessionConstants.SESSION_ID] = HttpContext.Session.GetString(SessionConstants.SESSION_ID);
+            return View();
         }
 
         public IActionResult Privacy()
         {
+            // Pass session ID to view using ViewData or ViewBag
+            ViewData[SessionConstants.SESSION_ID] = HttpContext.Session.GetString(SessionConstants.SESSION_ID);
+
             return View();
         }
 
