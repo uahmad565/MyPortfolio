@@ -1,10 +1,251 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
+    ViewData["noOfProjs"] = 5;
+    var noOfProjs = 5;
 }
 
 <h4>@ViewData["SessionId"]</h4>
+<style>
+    /* Introduction section styles */
+    #introduction .bi-check-circle-fill {
+        font-size: 1.2rem;
+    }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    #introduction h2 {
+        color: #2c3e50;
+    }
+    /* end */
+
+    .social-icons {
+        display: inline-block !important;
+        padding-right: 15px;
+        padding-left: 15px;
+    }
+
+    .home-about-social-links {
+        justify-content: center !important;
+        padding-top: 15px !important;
+        display: inline-block !important;
+        position: relative !important;
+        padding-inline-start: 0 !important;
+    }
+
+    .home-social-icons {
+        position: relative !important;
+        display: inline-block !important;
+        width: 40px !important;
+        height: 40px !important;
+        text-align: center !important;
+        font-size: 1.2em !important;
+        line-height: 2em !important;
+        background: rgba(255, 255, 255, 0.972) !important;
+        border-radius: 50% !important;
+        transition: 0.5s !important;
+    }
+</style>
+
+
+<div class="container py-5" id="introduction">
+    <div class="row align-items-center">
+        <!-- Profile Picture Section -->
+        <div class="col-lg-4 col-md-5 text-center">
+            <img src="~/images/portfolio/DSC_9339.JPG" alt="Your Profile Picture" class="img-fluid rounded-circle shadow" style="width: 300px; height: 300px;">
+            <p>
+                Feel free to
+                <span class="purple">
+                    connect
+                </span>with me
+            </p>
+            <ul class="home-about-social-links">
+                <li class="social-icons">
+                    <a href="https://github.com/uahmad565/" target="_blank" rel="noreferrer" class="icon-colour  home-social-icons">
+                        <img class="w-100" src="~/images/portfolio/socialmedia/github.svg" alt="github" />
+                    </a>
+                </li>
+                <li class="social-icons">
+                    <a href="https://twitter.com/uahmad565" target="_blank" rel="noreferrer" class="icon-colour  home-social-icons">
+                        <img class="w-100" src="~/images/portfolio/socialmedia/twitter.svg" alt="twitter" />
+                    </a>
+                </li>
+                <li class="social-icons">
+                    <a href="https://www.linkedin.com/in/usman-kabeer-155b31218/" target="_blank" rel="noreferrer" class="icon-colour  home-social-icons">
+                        <img class="w-100" src="~/images/portfolio/socialmedia/linkedin.svg" alt="linkedIn" />
+                    </a>
+                </li>
+                <li class="social-icons">
+                    <a href="https://www.instagram.com/uahmad565/" target="_blank" rel="noreferrer" class="icon-colour home-social-icons">
+                        <img class="w-100" src="~/images/portfolio/socialmedia/instagram.svg" alt="instagram" />
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Introduction and Experience Section -->
+        <div class="col-lg-8 col-md-7 mt-4 mt-md-0">
+            <h2 class="display-5 fw-bold">Hello, I'm [Your Name]</h2>
+            <p class="lead">AI & Web Development Specialist with over [X] years of experience in building innovative solutions and interactive websites.</p>
+
+            <!-- Experience Highlights -->
+            <div class="mt-4">
+                <h4 class="fw-semibold">Experience Highlights</h4>
+                <ul class="list-unstyled">
+                    <li>
+                        <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                        AI Projects: Developed intelligent solutions leveraging machine learning and AI.
+                    </li>
+                    <li>
+                        <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                        Website Development: Built and maintained responsive and engaging websites.
+                    </li>
+                    <li>
+                        <i class="bi bi-check-circle-fill text-primary me-2"></i>
+                        Companies: Collaborated with organizations like Imanami and more.
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Additional Information Section -->
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <p class="mb-1"><strong>Total Experience:</strong> [X] Years</p>
+                </div>
+                <div class="col-md-6">
+                    <p class="mb-1"><strong>Skills:</strong> AI, Web Development, Angular, .NET, Docker, SQL</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="home-about-social col-md-12">
+            <h1>FIND ME ON</h1>
+            <p>
+                Feel free to
+                <span class="purple">
+                    connect
+                </span>with me
+            </p>
+            <ul class="home-about-social-links">
+                <li class="social-icons">
+                    <a href="https://github.com/uahmad565/" target="_blank" rel="noreferrer" class="icon-colour  home-social-icons">
+                        <img class="w-100" src="~/images/portfolio/socialmedia/github.svg" alt="github" />
+                    </a>
+                </li>
+                <li class="social-icons">
+                    <a href="https://twitter.com/uahmad565" target="_blank" rel="noreferrer" class="icon-colour  home-social-icons">
+                        <img class="w-100" src="~/images/portfolio/socialmedia/twitter.svg" alt="twitter" />
+                    </a>
+                </li>
+                <li class="social-icons">
+                    <a href="https://www.linkedin.com/in/usman-kabeer-155b31218/" target="_blank" rel="noreferrer" class="icon-colour  home-social-icons">
+                        <img class="w-100" src="~/images/portfolio/socialmedia/linkedin.svg" alt="linkedIn" />
+                    </a>
+                </li>
+                <li class="social-icons">
+                    <a href="https://www.instagram.com/uahmad565/" target="_blank" rel="noreferrer" class="icon-colour home-social-icons">
+                        <img class="w-100" src="~/images/portfolio/socialmedia/instagram.svg" alt="instagram" />
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <h2>My Skills</h2>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <!-- Frontend Stack -->
+            <div class=" stack">
+                <h3 data-toggle="collapse" data-target="#frontendStack" aria-expanded="false" aria-controls="frontendStack" style="cursor: pointer;">
+                    Frontend
+                </h3>
+                <div class="collapse show" id="frontendStack">
+                    <div class="mb-3">
+                        <h4>JavaScript</h4>
+                        <div class="progress">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">90%</div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <h4>CSS</h4>
+                        <div class="progress">
+                            <div class="progress-bar bg-info" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
+                        </div>
+                    </div>
+                    <!-- Add more frontend skills as needed -->
+                </div>
+            </div>
+            <!-- Backend Stack -->
+            <div class=" stack">
+                <h3 data-toggle="collapse" data-target="#backendStack" aria-expanded="false" aria-controls="backendStack" style="cursor: pointer;">
+                    Backend
+                </h3>
+                <div class="collapse show" id="backendStack">
+                    <div class="mb-3">
+                        <h4>ASP.NET Core</h4>
+                        <div class="progress">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100">85%</div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <h4>Node.js</h4>
+                        <div class="progress">
+                            <div class="progress-bar bg-info" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100">75%</div>
+                        </div>
+                    </div>
+                    <!-- Add more backend skills as needed -->
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 col-md-6">
+            <!-- DevOps Stack -->
+            <div class=" stack">
+                <h3 data-toggle="collapse" data-target="#devopsStack" aria-expanded="false" aria-controls="devopsStack" style="cursor: pointer;">
+                    DevOps
+                </h3>
+                <div class="collapse show" id="devopsStack">
+                    <div class="mb-3">
+                        <h4>Docker</h4>
+                        <div class="progress">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100">80%</div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <h4>Jenkins</h4>
+                        <div class="progress">
+                            <div class="progress-bar bg-info" role="progressbar" style="width: 70%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100">70%</div>
+                        </div>
+                    </div>
+                    <!-- Add more DevOps skills as needed -->
+                </div>
+
+                <!-- Add more stacks as needed -->
+            </div>
+        </div>
+    </div>
+
+
+
+
+</div>
+
+<div class="container">
+    <h2>My Projects</h2>
+    <div class="row">
+        @* Projects *@
+        @for (int i = 0; i < noOfProjs; i++)
+        {
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
+                <div class="card">
+                    <img src="~/images/portfolio/pic1.svg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Card title 1</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 </div>

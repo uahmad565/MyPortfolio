@@ -12,4 +12,11 @@
             alert('Error sending message.');
         }
     });
+
+
+    //Skills collapse
+    $('[data-toggle="collapse"]').on('click',function () {
+        var target = $(this).attr('data-target');
+        $(target).collapse('toggle');
+    });
 });
