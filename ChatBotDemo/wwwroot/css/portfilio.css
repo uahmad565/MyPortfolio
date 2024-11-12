@@ -1,0 +1,47 @@
+﻿
+:root {
+    --hue-color: 250;
+    --first-color: hsl(var(--hue-color), 69%, 61%);
+    --first-color-second: hsl(var(--hue-color), 69%, 61%);
+    --first-color-alt: hsl(var(--hue-color), 57%, 53%);
+    --first-color-lighter: hsl(var(--hue-color), 92%, 85%);
+    --title-color: hsl(var(--hue-color), 8%, 15%);
+    --text-color: hsl(var(--hue-color), 8%, 45%);
+    --text-color-light: hsl(var(--hue-color), 8%, 65%);
+}
+
+:root {
+    --big-font-size: 3rem;
+    --h1-font-size: 2.25rem;
+    --h2-font-size: 1.5rem;
+    --h3-font-size: 1.25rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .875rem;
+    --smaller-font-size: .813rem;
+}
+
+.purple {
+    color: #c770f0 !important;
+}
+
+.skills__subtitle {
+    font-size: var(--smaller-font-size);
+    color: var(--text-color-light);
+}
+
+.image-box {
+    width: 299px;
+    height: 208px;
+    overflow: hidden;
+}
+
+    .image-box img {
+        width: 299px;
+        height: 218px;
+        overflow: hidden;
+    }
+
+.stack-box {
+    padding: 1rem;
+    background: #f8f9fa;
+}

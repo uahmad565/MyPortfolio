@@ -1,0 +1,35 @@
+﻿
+@model BootstrapModalViewModel
+
+<style>
+    .bulletpoints{
+        list-style:none;
+        padding:0
+    }
+</style>
+<!-- Modal -->
+<div class="modal fade" id="@Model.Id" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <!-- Vertically centered modal -->
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">@Model.Title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <ul class="bulletpoints">
+
+                    @foreach (var bulletPoint in Model.BulletPoints)
+                    {
+                        <li class="d-flex align-baseline">
+                            <div class="me-2">
+                                 <img src="~/images/check-circle.svg" alt="check circle" />
+                            </div>
+                            <p>@bulletPoint</p>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

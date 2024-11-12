@@ -16,7 +16,7 @@ namespace ChatBotDemo.Controllers
         public IActionResult Index()
         {
 
-            ViewData[SessionConstants.SESSION_ID] = HttpContext.Session.GetString(SessionConstants.SESSION_ID);
+            ViewData[SessionConstants.SESSION_ID] = HttpContext.Session.GetString(SessionConstants.SESSION_ID);   
             return View();
         }
 

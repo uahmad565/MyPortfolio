@@ -18,5 +18,9 @@
     $('[data-toggle="collapse"]').on('click',function () {
         var target = $(this).attr('data-target');
         $(target).collapse('toggle');
+        
+        // Toggle SVG icons
+        $(this).find('.icon-open').toggle();
+        $(this).find('.icon-closed').toggle();
     });
 });

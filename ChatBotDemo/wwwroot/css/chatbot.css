@@ -2,7 +2,7 @@
     display: none; /*don't show initially chat btn */
     position: fixed;
     right: 10px;
-    bottom: 70px;
+    bottom: 30px;
 }
 
 .chatbot-assisstant {
@@ -11,7 +11,7 @@
     /*bottom: 0px;*/
     bottom: -100%; /* Position out of view */
     right: 20px;
-    width: 400px;
+    max-width: 400px;
     max-height: 600px;
     z-index: 1050; /* Above other content */
     border: 1px solid #ddd;
@@ -38,6 +38,10 @@
 .chat-header {
     background-color: rgb(255, 255, 255);
     color: rgb(1, 153, 213);
+}
+
+#chatForm {
+    background: #f6f6f6;
 }
 
 .minimize-btn {

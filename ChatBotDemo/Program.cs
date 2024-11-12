@@ -1,6 +1,7 @@
 using ChatBotDemo.Middlewares;
 using ChatBotDemo.Models.Helpers;
 using ChatBotDemo.Models.Interfaces;
+using ChatBotDemo.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +22,11 @@ builder.Services.AddSession(options =>
 });
 
 builder.Services.AddScoped<IMemoryStorage, MemoryStorage>();
+
+builder.Services.AddHttpClient<IChatbotService, ChatbotService>(client =>
+{
+    client.BaseAddress = new Uri(builder.Configuration["ChatbotServerUrl"]);
+});
 
 var app = builder.Build();
 
