@@ -1,7 +1,9 @@
+using ChatBotDemo.Data;
 using ChatBotDemo.Middlewares;
 using ChatBotDemo.Models.Helpers;
 using ChatBotDemo.Models.Interfaces;
 using ChatBotDemo.Services;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +29,11 @@ builder.Services.AddHttpClient<IChatbotService, ChatbotService>(client =>
 {
     client.BaseAddress = new Uri(builder.Configuration["ChatbotServerUrl"]);
 });
+
+//Add Sql Server
+builder.Services.AddDbContext<MyDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")
+));
 
 var app = builder.Build();
 
@@ -55,5 +62,15 @@ app.UseMiddleware<SessionInitializerMiddleware>();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+
+// Ensure database is created
+using (var scope = app.Services.CreateScope())
+{
+    var dbContext = scope.ServiceProvider.GetRequiredService<MyDbContext>();
+    dbContext.Database.EnsureCreated();
+    dbContext.Add(new Product() { Name = "usman_" + DateTime.Now.ToString(), Price = 25 });
+    dbContext.SaveChanges();
+}
 
 app.Run();

@@ -30,13 +30,13 @@
 }
 
 .image-box {
-    width: 299px;
+    max-width: 299px;
     height: 208px;
     overflow: hidden;
 }
 
     .image-box img {
-        width: 299px;
+        max-width: 299px;
         height: 218px;
         overflow: hidden;
     }

@@ -1,3 +1,4 @@
+using ChatBotDemo.Data;
 using ChatBotDemo.Models;
 using ChatBotDemo.Models.Helpers;
 using Microsoft.AspNetCore.Mvc;
@@ -8,9 +9,11 @@ namespace ChatBotDemo.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        public HomeController(ILogger<HomeController> logger)
+        private readonly MyDbContext _dbcontext;
+        public HomeController(ILogger<HomeController> logger, MyDbContext dbcontext)
         {
             _logger = logger;
+            _dbcontext = dbcontext;
         }
 
         public IActionResult Index()
@@ -18,6 +21,12 @@ namespace ChatBotDemo.Controllers
 
             ViewData[SessionConstants.SESSION_ID] = HttpContext.Session.GetString(SessionConstants.SESSION_ID);   
             return View();
+        }
+
+        [HttpGet]
+        public IActionResult GetProducts()
+        {
+            return new JsonResult(_dbcontext?.Products?.ToList());
         }
 
         public IActionResult Privacy()
