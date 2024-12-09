@@ -63,14 +63,26 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-
-// Ensure database is created
 using (var scope = app.Services.CreateScope())
 {
-    var dbContext = scope.ServiceProvider.GetRequiredService<MyDbContext>();
-    dbContext.Database.EnsureCreated();
-    dbContext.Add(new Product() { Name = "usman_" + DateTime.Now.ToString(), Price = 25 });
-    dbContext.SaveChanges();
+    try
+    {
+        // Ensure database is created
+        var dbContext = scope.ServiceProvider.GetRequiredService<MyDbContext>();
+        dbContext.Database.EnsureCreated();
+        dbContext.Add(new Product() { Name = "usman_" + DateTime.Now.ToString(), Price = 25 });
+        dbContext.SaveChanges();
+
+    }
+    catch (Exception ex)
+    {
+        // Log the error
+        var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
+        logger.LogError(ex, "An error occurred while creating the database.");
+        // You can also redirect to a custom error page if needed
+        throw;
+    }
+
 }
 
 app.Run();

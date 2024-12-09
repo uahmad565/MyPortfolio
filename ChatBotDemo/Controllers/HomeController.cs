@@ -19,7 +19,7 @@ namespace ChatBotDemo.Controllers
         public IActionResult Index()
         {
 
-            ViewData[SessionConstants.SESSION_ID] = HttpContext.Session.GetString(SessionConstants.SESSION_ID);   
+            ViewData[SessionConstants.SESSION_ID] = HttpContext.Session.GetString(SessionConstants.SESSION_ID);
             return View();
         }
 
@@ -33,14 +33,26 @@ namespace ChatBotDemo.Controllers
         {
             // Pass session ID to view using ViewData or ViewBag
             ViewData[SessionConstants.SESSION_ID] = HttpContext.Session.GetString(SessionConstants.SESSION_ID);
+            
+            return View();
+        }
 
+        public IActionResult ThrowError()
+        {
+            // Pass session ID to view using ViewData or ViewBag
+            //ViewData[SessionConstants.SESSION_ID] = HttpContext.Session.GetString(SessionConstants.SESSION_ID);
+            throw new Exception("usmanError: Privacy Method is not implemented.");
             return View();
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View(new ErrorViewModel
+            {
+                RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier,
+                Message = "Usman 565"
+            });
         }
     }
 }
