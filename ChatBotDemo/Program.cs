@@ -80,7 +80,6 @@ using (var scope = app.Services.CreateScope())
         var logger = scope.ServiceProvider.GetRequiredService<ILogger<Program>>();
         logger.LogError(ex, "An error occurred while creating the database.");
         // You can also redirect to a custom error page if needed
-        throw;
     }
 
 }
