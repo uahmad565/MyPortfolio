@@ -48,7 +48,14 @@ namespace ChatBotDemo.Controllers
         [HttpGet]
         public IActionResult GetProducts()
         {
-            return new JsonResult(_dbcontext?.Products?.ToList());
+            try
+            {
+                return new JsonResult(_dbcontext?.Products?.ToList());
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         public IActionResult Privacy()
