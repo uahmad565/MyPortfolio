@@ -24,6 +24,28 @@ namespace ChatBotDemo.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> UrlOutput(string url)
+        {
+            //if (string.IsNullOrEmpty(url))
+            //    return BadRequest("Url empty or null.");
+            // URL to send the GET request to
+            //string url = "http://usmandev.eastus.cloudapp.azure.com/";
+            using (HttpClient client = new HttpClient())
+            {
+                try
+                {
+                    string response = await client.GetStringAsync(url);
+                    ViewBag.Response = response;
+                }
+                catch (Exception e)
+                {
+                    return BadRequest(e.Message);
+                }
+                return View();
+            }
+        }
+
+        [HttpGet]
         public IActionResult GetProducts()
         {
             return new JsonResult(_dbcontext?.Products?.ToList());
@@ -33,7 +55,7 @@ namespace ChatBotDemo.Controllers
         {
             // Pass session ID to view using ViewData or ViewBag
             ViewData[SessionConstants.SESSION_ID] = HttpContext.Session.GetString(SessionConstants.SESSION_ID);
-            
+
             return View();
         }
 
