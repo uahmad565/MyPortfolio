@@ -1,3 +1,6 @@
+using Azure.Core;
+using Azure.Identity;
+using Azure.Security.KeyVault.Secrets;
 using ChatBotDemo.Data;
 using ChatBotDemo.Models;
 using ChatBotDemo.Models.Helpers;
@@ -21,6 +24,34 @@ namespace ChatBotDemo.Controllers
 
             ViewData[SessionConstants.SESSION_ID] = HttpContext.Session.GetString(SessionConstants.SESSION_ID);
             return View();
+        }
+        [HttpGet]
+        public IActionResult GetKeyVaultSecret()
+        {
+            try
+            {
+                SecretClientOptions options = new SecretClientOptions()
+                {
+                    Retry =
+                    {
+                        Delay= TimeSpan.FromSeconds(2),
+                        MaxDelay = TimeSpan.FromSeconds(16),
+                        MaxRetries = 5,
+                        Mode = RetryMode.Exponential
+                     }
+                };
+                var client = new SecretClient(new Uri("https://usman-keyvault-eastus.vault.azure.net/"), new DefaultAzureCredential(), options);
+
+                KeyVaultSecret secret = client.GetSecret("connStr");
+
+
+                string secretValue = secret.Value;
+                return Ok(secretValue);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
         [HttpGet]
