@@ -32,9 +32,7 @@ builder.Services.AddHttpClient<IChatbotService, ChatbotService>(client =>
 
 //Add Sql Server
 builder.Services.AddDbContext<MyDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")
-));
-
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),options => options.EnableRetryOnFailure()));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
