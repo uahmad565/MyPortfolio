@@ -85,7 +85,9 @@ namespace ChatBotDemo.Controllers
             }
             catch (Exception e)
             {
-                return BadRequest(e.Message);
+                var errorMessage = e.Message;
+                errorMessage += $"usmanError: {e.InnerException?.Message}";
+                return BadRequest(errorMessage);
             }
         }
 
